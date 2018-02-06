@@ -50,7 +50,7 @@ class TeamJumbotron extends Jumbotron {
                                         <p><h2>We'll pick your team for the season.</h2></p>
                                         <br />
                                         </div> }
-                { this.state.isHidden ? <img src={process.env.PUBLIC_URL + this.state.teamLogo} /> : <PickButton handleClick={this.handleClick} /> }
+                { this.state.isHidden ? <img alt="team-logo" src={process.env.PUBLIC_URL + this.state.teamLogo} /> : <PickButton handleClick={this.handleClick} /> }
             {/*// </Jumbotron>*/}
             </div>
         );

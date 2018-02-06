@@ -1,8 +1,27 @@
 import * as React from 'react';
 import { Navbar, MenuItem, NavDropdown, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
-class PickMyTeamNavBar extends Navbar {
+const responseGoogle = (response) => {
+  console.log(response);
+}
+
+export class AuthBar extends Navbar {
+  render() {
+    return (
+       <Navbar fixedTop inverse fluid >
+        <Navbar.Header>
+          <Navbar.Brand>
+            <Link to="/">PickMyTeam</Link>
+          </Navbar.Brand>
+        </Navbar.Header>
+      </Navbar>
+    );
+  }
+}
+
+export class PickMyTeamNavBar extends Navbar {
   render() {
     return (
       <Navbar fixedTop inverse fluid >
@@ -21,11 +40,16 @@ class PickMyTeamNavBar extends Navbar {
         </Nav>
         <Nav pullRight >
           <NavDropdown eventKey={3} title="Account" id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1}>Action</MenuItem>
+            <MenuItem eventKey={3.1}>
+              <GoogleLogin
+                clientId="332557267946-7bqtb8ahaumojvno3dghd3p76hq0r3qt.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+              />,
+            </MenuItem>
             <MenuItem eventKey={3.2}>Another action</MenuItem>
-            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={3.4}>Separated link</MenuItem>
+
           </NavDropdown>
         </Nav>
       </Navbar>
@@ -33,4 +57,4 @@ class PickMyTeamNavBar extends Navbar {
   }
 }
 
-export default PickMyTeamNavBar;
+// export default { AuthBar, PickMyTeamNavBar };
