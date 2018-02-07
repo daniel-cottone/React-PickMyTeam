@@ -3,7 +3,7 @@ import React from 'react';
 import TeamJumbotron from '../PickerJumbotron.js';
 
 
-const Picker = () => {
+const PickerPage = () => {
   return (
     <div>
         <TeamJumbotron />
@@ -11,4 +11,4 @@ const Picker = () => {
   );
 };
 
-export default Picker;
+export default PickerPage;

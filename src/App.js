@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import { Route, Switch, Link } from 'react-router-dom';
 import './index.css';
 import './components/common/common.css'
 
-import { PickMyTeamNavBar, AuthBar } from './components/PickMyTeamNavBar.js';
-import TeamJumbotron from './components/PickerJumbotron.js';
-import NFLScoreboard from './components/NFLScoreboard.js';
-import Auth from './components/Auth.js';
-
+// Custom components
+import NavBar from './components/common/NavBar';
 import LoginPage from './components/common/LoginPage';
 import PickerPage from './components/common/PickerPage';
 import ScoresPage from './components/common/ScoresPage';
 
 class App extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
 
     this.state = {
       auth: false,
@@ -26,15 +23,19 @@ class App extends Component {
   }
 
   handleClick() {
-    this.setState = {auth: true}
+    console.log("Button clicked!");
+    this.setState({auth: !this.state.auth});
   }
 
   render() {
+    var isAuthenticated = this.state.auth;
+    console.log(this.state.auth);
+
     return (
       <div className="App">
 
         {/*Navbar*/}
-        {!this.state.auth ? <AuthBar /> : <PickMyTeamNavBar />}
+        <NavBar auth={this.state.auth} handleClick={this.handleClick}/>
 
         {/*Header*/}
         <header className="App-header">
@@ -44,7 +45,7 @@ class App extends Component {
 
         {/*Body*/}
         <body>
-          {!this.state.auth ? <Route exact path="/" render={routeProps => <LoginPage handleClick={this.handleClick}/>} />: //<Auth id='auth-button' handleClick={this.handleClick} />} />:
+          {!isAuthenticated ? <Route path="/" render={routeProps => <LoginPage handleClick={this.handleClick}/>} />:
               <Switch>
                 <Route exact path="/" component={PickerPage} />
                 <Route path="/scoreboard" component={ScoresPage} />

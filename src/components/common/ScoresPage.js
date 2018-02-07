@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import './common.css';
 
-class NFLScoreboard extends React.Component {
+class ScoresPage extends Component {
 
     render() {
         return (
@@ -13,16 +13,4 @@ class NFLScoreboard extends React.Component {
     }
 }
 
-export default NFLScoreboard;
-
-
-
-// class Iframe extends React.Component {     
-//   render() {
-//     return(         
-//         <iframe src={this.props.src} frameborder="0" width="100%" height="100%"
-//                 position="absolute" border="0" title="NFL iframe" //top="0" left="0" right="0" bottom="0" 
-//         />         
-//     )
-//   }
-// }
+export default ScoresPage;
